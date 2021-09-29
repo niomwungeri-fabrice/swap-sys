@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import solar.ampersand.batterySwap.exception.HttpResponseHandler;
+import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
 import solar.ampersand.batterySwap.models.MotorBike;
 import solar.ampersand.batterySwap.services.AssignMotorBikeService;
 import solar.ampersand.batterySwap.services.MotorService;
@@ -19,7 +19,7 @@ public class MotorBikeController {
     private MotorService motorService;
 
     @Autowired
-    private AssignMotorBikeService assignBatteryToMotorBike;
+    private AssignMotorBikeService assignMotorBikeToDriver;
 
     @GetMapping("/bikes")
     public ResponseEntity<?> getAllBikes() {
@@ -58,7 +58,7 @@ public class MotorBikeController {
             JSONObject json = (JSONObject) parser.parse(motorBikeBattery);
             String driverId = (String) json.get("driverId");
             String motorBikeId = (String) json.get("motorBikeId");
-            assignBatteryToMotorBike.assignMotoBikeToDrive(driverId, motorBikeId);
+            assignMotorBikeToDriver.assignMotoBikeToDrive(driverId, motorBikeId);
             return new ResponseEntity<>(HttpResponseHandler.responseHandler("message", "Driver ["+driverId+"] Assigned to ["+motorBikeId+"] Successfully"),
                     HttpStatus.OK);
         } catch (Exception e) {

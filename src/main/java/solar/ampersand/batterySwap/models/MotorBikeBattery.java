@@ -1,11 +1,13 @@
 package solar.ampersand.batterySwap.models;
 
 
+import solar.ampersand.batterySwap.generics.GenericModel;
+
 import javax.persistence.*;
 import java.util.UUID;
 @Entity
 @Table(name="motorbike_batteries")
-public class MotorBikeBattery {
+public class MotorBikeBattery extends GenericModel {
     @Id
     @Column(name = "motorbike_battery_id")
     protected UUID motorBikeBatteryId = UUID.randomUUID();

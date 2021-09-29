@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<repackage.classifier/>
 		<spring-native.version>0.10.4</spring-native.version>
+		<start-class>solar.ampersand.batterySwap.BatterySwapSystemApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
