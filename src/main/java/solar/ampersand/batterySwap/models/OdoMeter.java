@@ -10,7 +10,8 @@ import java.util.UUID;
 public class OdoMeter extends GenericModel {
     @Id
     @Column(name = "odo_meter_id")
-    private final UUID odoMeterId = UUID.randomUUID();
+    protected UUID odoMeterId = UUID.randomUUID();
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "motor_bike_id")

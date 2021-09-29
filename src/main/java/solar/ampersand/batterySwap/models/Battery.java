@@ -3,6 +3,7 @@ package solar.ampersand.batterySwap.models;
 import solar.ampersand.batterySwap.generics.GenericModel;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -10,11 +11,11 @@ import java.util.UUID;
 public class Battery extends GenericModel {
     @Id
     @Column(name = "battery_id")
-    private final UUID batteryId = UUID.randomUUID();
+    protected UUID batteryId = UUID.randomUUID();
     @Column
     private String name;
     @Column(name = "battery_level")
-    private double batteryLevel;
+    private Double batteryLevel;
 
     @OneToOne(mappedBy = "batteryIn")
     private Swap swapIn;
@@ -33,12 +34,12 @@ public class Battery extends GenericModel {
         this.name = name;
     }
 
-    public double getBatteryLevel() {
+    public Double getBatteryLevel() {
         return batteryLevel;
     }
 
-    public void setBatteryLevel(double batteryLevel) {
-        this.batteryLevel = batteryLevel;
+    public void setBatteryLevel(Double batteryLevel) {
+        this.batteryLevel = Objects.requireNonNullElse(batteryLevel, 100.0);
     }
 
     public Swap getSwapIn() {
