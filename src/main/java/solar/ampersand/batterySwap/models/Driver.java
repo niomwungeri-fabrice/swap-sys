@@ -9,8 +9,8 @@ import java.util.UUID;
 @Table(name = "drivers")
 public class Driver extends GenericModel {
     @Id
-    @Column(name = "user_id")
-    private final UUID userId = UUID.randomUUID();
+    @Column(name = "driver_id")
+    protected UUID driverId = UUID.randomUUID();
     @Column(name = "phone_number", unique = true)
     private String phoneNumber;
     @Column
@@ -19,8 +19,8 @@ public class Driver extends GenericModel {
     @OneToOne(mappedBy = "driver")
     private Swap swap;
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getDriverId() {
+        return driverId;
     }
 
     public String getPhoneNumber() {

@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Station extends GenericModel {
     @Id
     @Column(name = "station_id")
-    private final UUID stationId = UUID.randomUUID();
+    protected UUID stationId = UUID.randomUUID();
     @Column
     private String location;
 

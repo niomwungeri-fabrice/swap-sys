@@ -6,18 +6,15 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "motor_bikes")
+@Table(name = "motorbikes")
 public class MotorBike extends GenericModel {
     @Id
     @Column(name = "motor_bike_id")
-    private final UUID motorBikeId = UUID.randomUUID();
+    protected UUID motorBikeId = UUID.randomUUID();
     @Column
     private String name;
     @Column
     private String model;
-
-    @OneToOne(mappedBy = "motorBike")
-    private OdoMeter odoMeter;
 
     public UUID getMotorBikeId() {
         return motorBikeId;
@@ -39,21 +36,4 @@ public class MotorBike extends GenericModel {
         this.model = model;
     }
 
-    public OdoMeter getOdoMeter() {
-        return odoMeter;
-    }
-
-    public void setOdoMeter(OdoMeter odoMeter) {
-        this.odoMeter = odoMeter;
-    }
-
-    @Override
-    public String toString() {
-        return "MotorBike{" +
-                "motorBikeId=" + motorBikeId +
-                ", name='" + name + '\'' +
-                ", model='" + model + '\'' +
-                ", odoMeter=" + odoMeter +
-                '}';
-    }
 }

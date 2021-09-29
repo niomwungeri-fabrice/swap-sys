@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Swap extends GenericModel {
     @Id
     @Column(name = "swap_id")
-    private final UUID swapId = UUID.randomUUID();
+    protected UUID swapId = UUID.randomUUID();
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "battery_in_id")
     private Battery batteryIn;

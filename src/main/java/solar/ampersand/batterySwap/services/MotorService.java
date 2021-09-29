@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MotorServices {
+public class MotorService {
 
     @Autowired
     MotorBikeDAO motorBikeDAO;
@@ -26,13 +26,9 @@ public class MotorServices {
         odoMeterDAO.save(odoMeter);
     }
 
-    public List<MotorBike> getAllBikes() {
-        List<MotorBike> motorBikes = motorBikeDAO.findAll();
 
-        if (motorBikes.size() > 0) {
-            return motorBikes;
-        } else {
-            return new ArrayList<MotorBike>();
-        }
+
+    public List<MotorBike> getAllBikes() {
+       return motorBikeDAO.findAll();
     }
 }
