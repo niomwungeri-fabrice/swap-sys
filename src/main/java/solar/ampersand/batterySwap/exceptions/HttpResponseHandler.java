@@ -1,4 +1,4 @@
-package solar.ampersand.batterySwap.exception;
+package solar.ampersand.batterySwap.exceptions;
 
 import java.util.HashMap;
 

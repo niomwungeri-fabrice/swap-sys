@@ -17,10 +17,8 @@ public class Battery extends GenericModel {
     @Column(name = "battery_level")
     private Double batteryLevel;
 
-    @OneToOne(mappedBy = "batteryIn")
-    private Swap swapIn;
-    @OneToOne(mappedBy = "batteryOut")
-    private Swap swapOut;
+    @OneToOne(mappedBy = "battery")
+    private MotorBikeBattery motorBikeBattery;
 
     public UUID getBatteryId() {
         return batteryId;
@@ -42,19 +40,11 @@ public class Battery extends GenericModel {
         this.batteryLevel = Objects.requireNonNullElse(batteryLevel, 100.0);
     }
 
-    public Swap getSwapIn() {
-        return swapIn;
+    public MotorBikeBattery getMotorBikeBattery() {
+        return motorBikeBattery;
     }
 
-    public void setSwapIn(Swap swapIn) {
-        this.swapIn = swapIn;
-    }
-
-    public Swap getSwapOut() {
-        return swapOut;
-    }
-
-    public void setSwapOut(Swap swapOut) {
-        this.swapOut = swapOut;
+    public void setMotorBikeBattery(MotorBikeBattery motorBikeBattery) {
+        this.motorBikeBattery = motorBikeBattery;
     }
 }

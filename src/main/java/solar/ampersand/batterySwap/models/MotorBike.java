@@ -16,6 +16,9 @@ public class MotorBike extends GenericModel {
     @Column
     private String model;
 
+    @OneToOne(mappedBy = "motorBike")
+    MotorBikeDriver motorBikeDriver;
+
     public UUID getMotorBikeId() {
         return motorBikeId;
     }

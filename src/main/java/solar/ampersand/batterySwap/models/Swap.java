@@ -12,38 +12,23 @@ public class Swap extends GenericModel {
     @Column(name = "swap_id")
     protected UUID swapId = UUID.randomUUID();
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "battery_in_id")
-    private Battery batteryIn;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "battery_out_id")
-    private Battery batteryOut;
+    @JoinColumn(name = "taken_battery_id")
+    private Battery takenBattery;
+    @JoinColumn(name = "returned_battery_id")
+    private Battery returnedBattery;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "driver_id")
     private Driver driver;
-    @Column(name = "battery_level")
-    private double batteryLevel;
+    @Column(name = "battery_out_level")
+    private Double batteryOutLevel;
+    @Column(name = "battery_in_level")
+    private Double batteryInLevel;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "station_id")
     private Station station;
 
     public UUID getSwapId() {
         return swapId;
-    }
-
-    public Battery getBatteryIn() {
-        return batteryIn;
-    }
-
-    public void setBatteryIn(Battery batteryIn) {
-        this.batteryIn = batteryIn;
-    }
-
-    public Battery getBatteryOut() {
-        return batteryOut;
-    }
-
-    public void setBatteryOut(Battery batteryOut) {
-        this.batteryOut = batteryOut;
     }
 
     public Driver getDriver() {
@@ -54,14 +39,6 @@ public class Swap extends GenericModel {
         this.driver = driver;
     }
 
-    public double getBatteryLevel() {
-        return batteryLevel;
-    }
-
-    public void setBatteryLevel(double batteryLevel) {
-        this.batteryLevel = batteryLevel;
-    }
-
     public Station getStation() {
         return station;
     }
@@ -69,4 +46,49 @@ public class Swap extends GenericModel {
     public void setStation(Station station) {
         this.station = station;
     }
+
+    public Battery getTakenBattery() {
+        return takenBattery;
+    }
+
+    public void setTakenBattery(Battery takenBattery) {
+        this.takenBattery = takenBattery;
+    }
+
+    public Battery getReturnedBattery() {
+        return returnedBattery;
+    }
+
+    public void setReturnedBattery(Battery returnedBattery) {
+        this.returnedBattery = returnedBattery;
+    }
+
+    public double getBatteryOutLevel() {
+        return batteryOutLevel;
+    }
+
+    public void setBatteryOutLevel(Double batteryOutLevel) {
+        this.batteryOutLevel = batteryOutLevel;
+    }
+
+    public double getBatteryInLevel() {
+        return batteryInLevel;
+    }
+
+    public void setBatteryInLevel(Double batteryInLevel) {
+        this.batteryInLevel = batteryInLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "Swap{" +
+                "takenBattery=" + takenBattery +
+                ", returnedBattery=" + returnedBattery +
+                ", driver=" + driver +
+                ", batteryOutLevel=" + batteryOutLevel +
+                ", batteryInLevel=" + batteryInLevel +
+                ", station=" + station +
+                '}';
+    }
+
 }

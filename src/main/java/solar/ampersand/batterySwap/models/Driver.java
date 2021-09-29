@@ -18,6 +18,8 @@ public class Driver extends GenericModel {
 
     @OneToOne(mappedBy = "driver")
     private Swap swap;
+    @OneToOne(mappedBy = "driver")
+    private MotorBikeDriver motorBikeDriver;
 
     public UUID getDriverId() {
         return driverId;
@@ -45,5 +47,13 @@ public class Driver extends GenericModel {
 
     public void setSwap(Swap swap) {
         this.swap = swap;
+    }
+
+    public MotorBikeDriver getMotorBikeDriver() {
+        return motorBikeDriver;
+    }
+
+    public void setMotorBikeDriver(MotorBikeDriver motorBikeDriver) {
+        this.motorBikeDriver = motorBikeDriver;
     }
 }

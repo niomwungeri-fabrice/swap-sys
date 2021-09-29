@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import solar.ampersand.batterySwap.dao.StationDAO;
 import solar.ampersand.batterySwap.models.Station;
 
+import java.util.UUID;
+
 @Service
 public class StationService {
     @Autowired
@@ -12,5 +14,9 @@ public class StationService {
 
     public void createStation(Station station){
         stationDAO.save(station);
+    }
+
+    public Station getOneStation(String stationId){
+        return stationDAO.getById(UUID.fromString(stationId));
     }
 }

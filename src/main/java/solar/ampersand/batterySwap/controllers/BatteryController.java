@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import solar.ampersand.batterySwap.exception.HttpResponseHandler;
+import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
 import solar.ampersand.batterySwap.models.Battery;
-import solar.ampersand.batterySwap.models.MotorBikeBattery;
 import solar.ampersand.batterySwap.services.AssignBatteryService;
 import solar.ampersand.batterySwap.services.BatteryService;
 
