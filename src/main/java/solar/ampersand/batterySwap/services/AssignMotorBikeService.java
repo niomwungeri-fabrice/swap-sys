@@ -17,7 +17,7 @@ public class AssignMotorBikeService {
     private MotorBikeDriverDAO motorBikeDriverDAO;
 
     // Assign MotorBike to A driver
-    public void assignMotoBikeToDrive(String driverId, String motorBikeId){
+    public MotorBikeDriver assignMotoBikeToDrive(String driverId, String motorBikeId){
         try {
             // Get Driver instance
             Driver driver = driverDAO.getById(UUID.fromString(driverId));
@@ -28,7 +28,7 @@ public class AssignMotorBikeService {
             motorBikeDriver.setDriver(driver);
             motorBikeDriver.setMotorBike(motorBike);
             // Assign driver to a motorBike
-            motorBikeDriverDAO.save(motorBikeDriver);
+            return motorBikeDriverDAO.save(motorBikeDriver);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }

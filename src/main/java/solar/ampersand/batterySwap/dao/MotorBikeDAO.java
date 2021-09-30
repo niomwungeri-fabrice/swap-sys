@@ -7,4 +7,5 @@ import solar.ampersand.batterySwap.models.MotorBike;
 import java.util.UUID;
 @Repository
 public interface MotorBikeDAO extends JpaRepository<MotorBike, UUID> {
+    // inherit builtin CRUD and basic SQL functionalities
 }

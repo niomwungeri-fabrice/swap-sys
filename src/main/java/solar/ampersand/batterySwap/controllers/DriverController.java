@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
+import solar.ampersand.batterySwap.helpers.GenericResponse;
 import solar.ampersand.batterySwap.models.Driver;
 import solar.ampersand.batterySwap.services.DriverService;
 
@@ -21,8 +22,7 @@ public class DriverController {
     @PostMapping("/drivers")
     public ResponseEntity<?> createDriver(@RequestBody Driver driver) {
         try {
-            driverService.createDriver(driver);
-            return new ResponseEntity<>(HttpResponseHandler.responseHandler("message", "Driver Created Successfully"),
+            return new ResponseEntity<>(new GenericResponse("Driver Created Successfully", driverService.createDriver(driver)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpResponseHandler.responseHandler("error", e.getMessage()),

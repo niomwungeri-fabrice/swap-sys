@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
+import solar.ampersand.batterySwap.helpers.GenericResponse;
 import solar.ampersand.batterySwap.models.MotorBike;
 import solar.ampersand.batterySwap.services.AssignMotorBikeService;
 import solar.ampersand.batterySwap.services.MotorService;
@@ -42,8 +43,8 @@ public class MotorBikeController {
             MotorBike bike = new MotorBike();
             bike.setModel(model);
             bike.setName(name);
-            motorService.createBike(bike);
-            return new ResponseEntity<>(HttpResponseHandler.responseHandler("message", "Motor Vehicle Created Successfully"),
+
+            return new ResponseEntity<>(new GenericResponse( "Motor Vehicle Created Successfully",  motorService.createBike(bike)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpResponseHandler.responseHandler("error", e.getMessage()),

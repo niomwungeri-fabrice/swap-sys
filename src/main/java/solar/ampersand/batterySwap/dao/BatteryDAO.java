@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface BatteryDAO extends JpaRepository<Battery, UUID> {
+    // inherit builtin CRUD and basic SQL functionalities
 }

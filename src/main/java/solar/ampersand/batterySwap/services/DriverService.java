@@ -13,8 +13,8 @@ public class DriverService {
     @Autowired
     private DriverDAO driverDAO;
 
-    public void createDriver(Driver driver){
-        driverDAO.save(driver);
+    public Driver createDriver(Driver driver){
+        return driverDAO.save(driver);
     }
     public Driver getOneDriver(String driverId){
         return driverDAO.getById(UUID.fromString(driverId));

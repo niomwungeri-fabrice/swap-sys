@@ -12,8 +12,8 @@ public class StationService {
     @Autowired
     private StationDAO stationDAO;
 
-    public void createStation(Station station){
-        stationDAO.save(station);
+    public Station createStation(Station station){
+        return stationDAO.save(station);
     }
 
     public Station getOneStation(String stationId){

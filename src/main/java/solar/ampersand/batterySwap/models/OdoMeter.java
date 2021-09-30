@@ -49,5 +49,15 @@ public class OdoMeter extends GenericModel {
     public void setPreviousReading(double previousReading) {
         this.previousReading = previousReading;
     }
+
+    @Override
+    public String toString() {
+        return "OdoMeter{" +
+                "odoMeterId=" + odoMeterId +
+                ", motorBike=" + motorBike +
+                ", currentReading=" + currentReading +
+                ", previousReading=" + previousReading +
+                '}';
+    }
 }
 

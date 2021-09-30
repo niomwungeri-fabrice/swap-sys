@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
+import solar.ampersand.batterySwap.helpers.GenericResponse;
 import solar.ampersand.batterySwap.models.*;
 import solar.ampersand.batterySwap.services.*;
 
@@ -57,9 +58,9 @@ public class SwapController {
             Station station = stationService.getOneStation((String) json.get("stationId"));
 
             // get the battery life of outing battery
-            Double batteryOutLevel = (Double) json.get("batteryOutLevel");
+            String batteryOutLevel = (String) json.get("batteryOutLevel");
             // get battery life of what is being taken(recharged)
-            Double batteryInLevel = (Double) json.get("batteryInLevel");
+            String batteryInLevel = (String) json.get("batteryInLevel");
 
             // get current Reading
             Double currentMileAge  = (Double) json.get("currentMileAge");
@@ -73,16 +74,15 @@ public class SwapController {
             swap.setReturnedBattery(returnedBattery);
             swap.setTakenBattery(takenBattery);
             swap.setStation(station);
-            swap.setBatteryInLevel(batteryInLevel);
-            swap.setBatteryOutLevel(batteryOutLevel);
+            swap.setBatteryInLevel(Double.valueOf(batteryInLevel));
+            swap.setBatteryOutLevel(Double.valueOf(batteryOutLevel));
             swapService.createSwap(swap);
 
             // create battery assigned to
             assignMotorBikeService.assignMotoBikeToDrive(driverId, motorBike.getMotorBikeId().toString());
-            // record odo meter
+            // update odo meter
             swapService.recordMileAge(motorBike, currentMileAge);
-
-            return new ResponseEntity<>(HttpResponseHandler.responseHandler("message", "Battery Swapped Successfully"),
+            return new ResponseEntity<>(new GenericResponse("Battery Swapped Successfully", swapService.recordMileAge(motorBike, currentMileAge)),
                     HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
