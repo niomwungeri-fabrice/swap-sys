@@ -5,7 +5,7 @@ Ampersand is Africa’s first and leading integrated electric motorcycle and tra
 SwapSys is a system that helps Ampersand Rwanda to manage their drivers, batteries, swapping station in all-in-one system.
 
 ## Access application online
-Deployed On Heroku [SwapSys](https://rssb-code-cha.herokuapp.com/)
+Deployed On Heroku [SwapSys](https://swap-sys.herokuapp.com/)
 
 ## Access Application locally
 
