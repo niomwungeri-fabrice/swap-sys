@@ -17,8 +17,6 @@ Deployed On Heroku [SwapSys](https://swap-sys.herokuapp.com/)
 
 ## Getting started
 
-Note: Make sure redis is running, and you have configured it.
-
 ```sh
 $ git clone git@github.com:niomwungeri-fabrice/swap-sys.git
 $ cd swap-sys

@@ -5,11 +5,13 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
+import solar.ampersand.batterySwap.helpers.CustomResponse;
 import solar.ampersand.batterySwap.helpers.GenericResponse;
 import solar.ampersand.batterySwap.models.*;
 import solar.ampersand.batterySwap.services.*;
@@ -43,6 +45,7 @@ public class SwapController {
     //################ Accessing Database Service ################
 
     @PostMapping("/swaps")
+    @Transactional
     public ResponseEntity<?> swapping(@RequestBody String swapRequest) {
         try {
             JSONParser parser = new JSONParser();
@@ -63,7 +66,7 @@ public class SwapController {
             String batteryInLevel = (String) json.get("batteryInLevel");
 
             // get current Reading
-            Double currentMileAge  = (Double) json.get("currentMileAge");
+            String currentMileAge  = (String) json.get("currentMileAge");
 
             MotorBike motorBike = driver.getMotorBikeDriver().getMotorBike();
 
@@ -81,8 +84,10 @@ public class SwapController {
             // create battery assigned to
             assignMotorBikeService.assignMotoBikeToDrive(driverId, motorBike.getMotorBikeId().toString());
             // update odo meter
-            swapService.recordMileAge(motorBike, currentMileAge);
-            return new ResponseEntity<>(new GenericResponse("Battery Swapped Successfully", swapService.recordMileAge(motorBike, currentMileAge)),
+            OdoMeter odoMeter = swapService.recordMileAge(motorBike, Double.valueOf(currentMileAge));
+
+
+            return new ResponseEntity<>(new CustomResponse("Battery Swapped Successfully", odoMeter, odoMeter.getCurrentReading() - odoMeter.getPreviousReading()),
                     HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
