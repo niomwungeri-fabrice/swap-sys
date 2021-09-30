@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface DriverDAO extends JpaRepository<Driver, UUID> {
+    // inherit builtin CRUD and basic SQL functionalities
 }

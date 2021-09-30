@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solar.ampersand.batterySwap.exceptions.HttpResponseHandler;
+import solar.ampersand.batterySwap.helpers.GenericResponse;
 import solar.ampersand.batterySwap.models.Station;
 import solar.ampersand.batterySwap.services.StationService;
 
@@ -21,8 +22,7 @@ public class StationController {
     @PostMapping("/stations")
     public ResponseEntity<?> createStation(@RequestBody Station station) {
         try {
-            stationService.createStation(station);
-            return new ResponseEntity<>(HttpResponseHandler.responseHandler("message", "Station Created Successfully"),
+            return new ResponseEntity<>(new GenericResponse("Station Created Successfully", stationService.createStation(station)),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpResponseHandler.responseHandler("error", e.getMessage()),

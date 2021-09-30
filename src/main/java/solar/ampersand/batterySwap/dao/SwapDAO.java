@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface SwapDAO extends JpaRepository<Swap, UUID> {
+    // inherit builtin CRUD and basic SQL functionalities
 }

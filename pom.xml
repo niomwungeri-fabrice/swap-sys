@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>solar.ampersand</groupId>
-	<artifactId>betterySwap</artifactId>
+	<artifactId>batterySwap</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>battery-swap-system</name>
 	<description>Battery Swapping</description>
@@ -67,6 +67,7 @@
     </dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

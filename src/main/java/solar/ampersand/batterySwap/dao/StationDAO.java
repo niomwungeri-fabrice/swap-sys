@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface StationDAO extends JpaRepository<Station, UUID> {
+    // inherit builtin CRUD and basic SQL functionalities
 }

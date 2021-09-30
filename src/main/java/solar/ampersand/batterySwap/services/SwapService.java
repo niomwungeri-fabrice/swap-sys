@@ -19,14 +19,14 @@ public class SwapService {
     public void createSwap(Swap swap){
         swapDAO.save(swap);
     }
-    public void recordMileAge(MotorBike motorBike, Double currentReading){
+    public OdoMeter recordMileAge(MotorBike motorBike, Double currentReading){
         OdoMeter odoMeter = odoMeterDAO.findByMotorBikeId(motorBike.getMotorBikeId());
         // assign previous with current reading before changing it
         odoMeter.setPreviousReading(odoMeter.getCurrentReading());
         // assign current with current mileage +currentReading
         odoMeter.setCurrentReading(odoMeter.getCurrentReading()+currentReading);
         odoMeter.setMotorBike(motorBike);
-        odoMeterDAO.save(odoMeter);
+        return odoMeterDAO.save(odoMeter);
     }
 
 

@@ -10,5 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface MotorBikeBatteryDAO extends JpaRepository<MotorBikeBattery, UUID> {
-
+// inherit builtin CRUD and basic SQL functionalities
 }

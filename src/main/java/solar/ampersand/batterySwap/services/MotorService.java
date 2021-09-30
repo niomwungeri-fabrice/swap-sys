@@ -7,7 +7,6 @@ import solar.ampersand.batterySwap.dao.OdoMeterDAO;
 import solar.ampersand.batterySwap.models.MotorBike;
 import solar.ampersand.batterySwap.models.OdoMeter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,11 +18,11 @@ public class MotorService {
     @Autowired
     OdoMeterDAO odoMeterDAO;
 
-    public void createBike(MotorBike motorBike){
+    public OdoMeter createBike(MotorBike motorBike){
         motorBikeDAO.save(motorBike);
         OdoMeter odoMeter = new OdoMeter();
         odoMeter.setMotorBike(motorBike);
-        odoMeterDAO.save(odoMeter);
+        return odoMeterDAO.save(odoMeter);
     }
 
 

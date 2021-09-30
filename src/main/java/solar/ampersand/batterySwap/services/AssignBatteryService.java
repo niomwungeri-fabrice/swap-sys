@@ -21,7 +21,7 @@ public class AssignBatteryService {
     private MotorBikeBatteryDAO motorBikeBatteryDAO;
 
     // Assign battery to a moto before being used
-    public void assignBatteryToMotorBike(String batteryId, String motorBikeId){
+    public MotorBikeBattery assignBatteryToMotorBike(String batteryId, String motorBikeId){
         try {
             // Get battery instance
             Battery battery = batteryDAO.getById(UUID.fromString(batteryId));
@@ -32,7 +32,7 @@ public class AssignBatteryService {
             motorBikeBattery.setBattery(battery);
             motorBikeBattery.setMotorBike(motorBike);
             // Assign battery to a moto
-            motorBikeBatteryDAO.save(motorBikeBattery);
+           return  motorBikeBatteryDAO.save(motorBikeBattery);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }

@@ -10,11 +10,12 @@ import java.util.UUID;
 
 @Service
 public class BatteryService {
+    // Inject Database service to get access to CRUD methods without writing a single line of code
     @Autowired
     private BatteryDAO batteryDAO;
 
-    public void createBattery(Battery battery){
-        batteryDAO.save(battery);
+    public Battery createBattery(Battery battery){
+        return batteryDAO.save(battery);
     }
 
     public Battery getOneBattery(String batteryId){
