@@ -73,7 +73,7 @@ We arranged the functions as someone would be explaining or telling a story of h
 
 ### 3. Predict & Optimization
 - `What's a good way to predict and optimize for how many batteries should be at a given station?`
-- Based on the information gathered on the swapping stations, we can leverage machine learning to understand the data and predict where it's mostly busy in terms of swapping and give that station priority.
+    - Based on the information gathered on the swapping stations, we can leverage machine learning to understand the data and predict where it's mostly busy in terms of swapping and give that station priority.
 
 ## Project built with:
 
